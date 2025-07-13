@@ -105,10 +105,10 @@ CREATE TABLE metadata (
 
 ### Scaling for Larger Data
 
-For larger-scale deployment with hundreds of projects and thousands of samples:
+For larger-scale deployment with hundreds of projects, thousands of samples, and various types of analytics:
 
 1. **Database Optimization**
-   - Add indexes on frequently queried columns (project, treatment, response) to avoid scanning every row
+   - Add indexes on frequently queried columns (project, treatment, response) to speed up database searches
    - Implement table partitioning by project or time period for faster queries
    - Consider using PostgreSQL which handles larger datasets better than SQLite
 
@@ -116,6 +116,10 @@ For larger-scale deployment with hundreds of projects and thousands of samples:
    - Implement caching for frequently accessed data to avoid recalculating the same results
    - Add data archiving strategies for old projects to separate storage
    - Keep only recent/active data in main database to maintain fast query performance
+
+3. **Analytics Scalability**
+   - The current schema supports various analytics: statistical testing, machine learning applications, etc
+   - The normalized structure allows for easy extension to include additional cell populations or clinical parameters
 
 ## Code Structure
 
@@ -154,7 +158,7 @@ teiko-project/
    - All intermediate files are saved, making debugging and verification easier
 
 3. Separation of Analysis and Visualization
-   - Analysis scripts (parts 1-4) focus on computation and save results the data folder
+   - Analysis scripts (parts 1-4) focus on computation and save results to the data folder
    - Dashboard (create_dashboard.py) focuses on presentation by loading and displaying saved results
    - Allows for multiple visualization approaches: same data can be displayed in different ways
 

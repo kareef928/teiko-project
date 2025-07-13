@@ -49,7 +49,7 @@ def load_csv_data(csv_file: str):
     conn = sqlite3.connect("data/cell_info.db")
     cursor = conn.cursor()
 
-    # drop and recreate tables to ensure proper schema
+    # drop tables if they exist to ensure proper schema
     cursor.execute("DROP TABLE IF EXISTS cell_counts")
     cursor.execute("DROP TABLE IF EXISTS metadata")
 
