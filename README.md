@@ -134,13 +134,12 @@ teiko-project/
 │   ├── part4_response_counts.csv
 │   └── part4_sex_counts.csv
 ├── requirements.txt
-├── src
-│   ├── create_dashboard.py
-│   ├── part1_data_processing.py
-│   ├── part2_initial_analysis.py
-│   ├── part3_statistical_analysis.py
-│   └── part4_subset_analysis.py
-└── test_pk.py
+└── src
+    ├── create_dashboard.py
+    ├── part1_data_processing.py
+    ├── part2_initial_analysis.py
+    ├── part3_statistical_analysis.py
+    └── part4_subset_analysis.py
 ```
 
 ### Design Motivation
