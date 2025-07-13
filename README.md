@@ -1,4 +1,4 @@
-# Clinical Trial Immune Cell Analysis Dashboard
+# Clinical Trial Immune Cell Analysis
 
 This repository contains an analysis pipeline for clinical trial data involving immune cell populations and treatment response, including a 4-part analysis workflow and Streamlit dashboard.
 

@@ -7,7 +7,8 @@ import pandas as pd
 
 def load_csv_data(csv_file: str):
     """
-    Load data from CSV into two tables as the schema above
+    Make schemas for two tables from original csv: first is the sample and cell counts for the different populations. Second is the
+    sample and metadata. Load data from CSV into these two tables.
 
     Args:
         csv_file (str, optional): The original csv file with all columns in one table. Defaults to "data/cell-count.csv".
@@ -24,7 +25,7 @@ def load_csv_data(csv_file: str):
         "nk_cell",
         "monocyte",
     ]
-    metadata_columns = [
+    metadata_cols = [
         "sample",
         "project",
         "subject",
@@ -38,7 +39,7 @@ def load_csv_data(csv_file: str):
     ]
 
     cell_counts_df = full_df[cell_count_cols].copy()
-    metadata_df = full_df[metadata_columns].copy()
+    metadata_df = full_df[metadata_cols].copy()
 
     # rename 'sample' to 'sample_id' for specificity
     cell_counts_df = cell_counts_df.rename(columns={"sample": "sample_id"})
@@ -94,7 +95,12 @@ def load_csv_data(csv_file: str):
 
 def verify_data_loading():
     """
-    Verify that data was loaded correctly. Testing individual tables as well as their relationship
+    Verify that data was loaded correctly by displaying sample data from each table and testing the relationship between tables.
+
+    This function:
+    - Displays the first 5 rows of the cell_counts table
+    - Displays the first 5 rows of the metadata table
+    - Tests the relationship by performing a JOIN query showing sample_id, b_cell, treatment, and condition
     """
 
     conn = sqlite3.connect("data/cell_info.db")

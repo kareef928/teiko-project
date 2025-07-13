@@ -12,16 +12,14 @@ def get_baseline_melanoma_miraclib_data(db_path: str):
         db_path (str): Path to database to retrieve the metadata table
 
     Returns:
-        baseline_df (pd.DataFrame): DataFrame that joins the cell_counts and metadata tables, and contains
-        baseline melanoma PBMC samples from patients treated with miraclib
+        baseline_df (pd.DataFrame): DataFrame that contains the rows from metadata which represent melanoma PBMC samples at baseline from miraclib-treated patients
     """
     conn = sqlite3.connect(db_path)
 
-    # join cell_counts and metadata on sample_id, and filter the data using a sql query
+    # select everything from metadata, and filter the data using a sql query
     query = """
     SELECT *
-    FROM cell_counts cc
-    JOIN metadata m ON cc.sample_id = m.sample_id
+    FROM metadata m
     WHERE m.condition = 'melanoma'
     AND m.treatment = 'miraclib'
     AND m.time_from_treatment_start = 0
