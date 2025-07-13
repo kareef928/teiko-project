@@ -7,8 +7,8 @@ import pandas as pd
 
 def load_csv_data(csv_file: str):
     """
-    Make schemas for two tables from original csv: first is the sample and cell counts for the different populations. Second is the
-    sample and metadata. Load data from CSV into these two tables.
+    Make two database schemas from the original csv: first is the sample and cell counts for each cell populations, and second is the
+    sample and associated metadata. Load data from CSV into these two tables.
 
     Args:
         csv_file (str, optional): The original csv file with all columns in one table. Defaults to "data/cell-count.csv".
